@@ -26,7 +26,7 @@ class EchoWebSocket extends EventTarget {
     })
   }
 
-  send(data: string | ArrayBufferLike | Blob | ArrayBufferView) {
+  send(data: BufferSource | Blob | string) {
     queueMicrotask(() => this.dispatchEvent(new MessageEvent("message", { data })))
   }
 

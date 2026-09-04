@@ -4,26 +4,16 @@ Record real Effect HTTP and WebSocket traffic once, then replay it from determin
 
 Use it for provider integrations, retries, polling, multi-step flows, and any test where hand-written HTTP mocks hide too much of the real request shape.
 
-> Public beta. The API depends on Effect 4 beta and may change with Effect's unstable transport modules.
+> Public beta. The API depends on Effect 4 release candidates and may change with Effect's unstable transport modules.
 
 ## Install
 
 ```sh
-bun add effect@4.0.0-beta.83
-bun add -d effect-http-recorder@beta @effect/vitest@4.0.0-beta.83 vitest@^4
+bun add effect@4.0.0-rc.112
+bun add -d effect-http-recorder@beta @effect/vitest@4.0.0-rc.112 typescript@^7 vitest@^4.1
 ```
 
-The package supports Node.js 22+ and Bun. It is not intended for browsers, workers, or Deno.
-
-Effect `4.0.0-beta.83` currently contains unresolved symbols in its published declarations. Until those upstream declarations are fixed, TypeScript consumers need:
-
-```json
-{
-  "compilerOptions": {
-    "skipLibCheck": true
-  }
-}
-```
+The package requires TypeScript 7 (`typescript@^7`), supports Node.js 22+ and Bun 1.4.1+, and is not intended for browsers, workers, or Deno.
 
 ## Quick Start
 
@@ -248,7 +238,7 @@ Cassettes are readable JSON files intended to be committed with your tests. HTTP
 - Constructor-level WebSocket cassettes reproduce terminal close codes and reasons, but not selected subprotocols, handshake headers, transport timing, or transport failures. Lower-level `layerSocket` cassettes contain frames only.
 - Failed and interrupted live WebSocket connections are not recorded.
 - WebSocket transcripts are retained in memory until the connection finishes; avoid using this beta for unbounded sessions.
-- The package currently requires the exact Effect beta listed above.
+- The package currently requires the exact Effect release candidate listed above.
 - Cassette format version `1` has no migration tooling yet.
 
 ## License

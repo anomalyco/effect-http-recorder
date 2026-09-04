@@ -31,7 +31,7 @@ const DEFAULT_REDACT_QUERY = [
   "x-amz-signature",
 ]
 
-const decodeJson = Schema.decodeUnknownOption(Schema.UnknownFromJsonString)
+const decodeJson = Schema.decodeUnknownOption(Schema.fromJsonString(Schema.Unknown))
 
 const redactionSet = (values: ReadonlyArray<string> | undefined, defaults: ReadonlyArray<string>) =>
   new Set([...defaults, ...(values ?? [])].map((value) => value.toLowerCase()))

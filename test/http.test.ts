@@ -215,7 +215,7 @@ describe("HTTP", () => {
       const completed: string[] = []
       using server = Bun.serve({
         port: 0,
-        fetch: async (request) => {
+        fetch: async (request: Request) => {
           const name = new URL(request.url).pathname.slice(1)
           if (name === "first") {
             await first.promise

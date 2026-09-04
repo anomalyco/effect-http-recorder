@@ -107,8 +107,6 @@ if (JSON.stringify(namespace) !== JSON.stringify(["hasCassetteSync", "layer", "l
           moduleResolution: "NodeNext",
           strict: true,
           noEmit: true,
-          // Required by effect@4.0.0-beta.83: its declarations currently contain unresolved internal symbols.
-          skipLibCheck: true,
           lib: ["ES2022", "DOM", "ESNext.Disposable"],
         },
         include: ["consumer.ts"],

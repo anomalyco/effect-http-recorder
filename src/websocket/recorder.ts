@@ -83,7 +83,7 @@ const webSocketFacade = (
     readonly protocol: () => string
     readonly extensions: () => string
     readonly bufferedAmount: () => number
-    readonly send: (data: string | ArrayBufferLike | Blob | ArrayBufferView) => void
+    readonly send: (data: BufferSource | Blob | string) => void
     readonly close: (code?: number, reason?: string) => void
   },
 ): globalThis.WebSocket => {
@@ -496,7 +496,7 @@ const makeRecordingWebSocketConstructor = (
     return new Proxy(native, {
       get: (target, property) => {
         if (property === "send")
-          return (data: string | ArrayBufferLike | Blob | ArrayBufferView) => {
+          return (data: BufferSource | Blob | string) => {
             target.send(data)
             appendEvent("client", data)
           }

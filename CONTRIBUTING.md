@@ -11,4 +11,4 @@ Use `bun run format` and `bun run lint:fix` for local fixes. Tests live under `t
 
 Add a Changeset with `bun run changeset` for user-facing changes. Review every cassette diff for credentials before committing it. Refresh a cassette by deleting only that cassette and rerunning its focused test.
 
-Effect beta upgrades must update runtime, peer, development, documentation, and clean-consumer versions together. Use static imports only; dynamic `import()` and inline import-type expressions are not accepted.
+Effect release candidate upgrades must update runtime, peer, development, documentation, and clean-consumer versions together. Use static imports only; dynamic `import()` and inline import-type expressions are not accepted.

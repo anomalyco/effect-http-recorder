@@ -1,20 +1,19 @@
 import { Schema } from "effect"
-import type { CassetteMetadata, JsonValue } from "../api.js"
+import type { JsonValue } from "../api.js"
 import { HttpInteractionSchema } from "../http/model.js"
 import { WebSocketInteractionSchema } from "../websocket/model.js"
 
 export type { CassetteMetadata, JsonValue } from "../api.js"
 
-const JsonValueSchema = Schema.suspend(
-  (): Schema.Codec<JsonValue> =>
-    Schema.Union([
-      Schema.Null,
-      Schema.Boolean,
-      Schema.Number,
-      Schema.String,
-      Schema.Array(JsonValueSchema),
-      Schema.Record(Schema.String, JsonValueSchema),
-    ]),
+const JsonValueSchema = Schema.suspend((): Schema.Codec<JsonValue> =>
+  Schema.Union([
+    Schema.Null,
+    Schema.Boolean,
+    Schema.Number,
+    Schema.String,
+    Schema.Array(JsonValueSchema),
+    Schema.Record(Schema.String, JsonValueSchema),
+  ]),
 )
 
 export const CassetteMetadataSchema = Schema.Record(Schema.String, JsonValueSchema)
